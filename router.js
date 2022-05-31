@@ -37,10 +37,16 @@ const openapiSpecification = swaggerJsdoc(apiInfo);
 let zones = []
 let markers = []
 
-// function readDB() {
-//     db.read()
-// }
+async function readDB() {
+    markers = await db.read("tweets")
+}
 
+
+cron.schedule('*/5 0 * * 0', () => {
+    readDB()
+});
+
+readDB()
 
 // === Experss Endpoints ===
 

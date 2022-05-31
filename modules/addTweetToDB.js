@@ -1,7 +1,7 @@
 require('dotenv').config({ path: '../.env' })
 const db = require("./db")
 const axios = require("axios")
-
+const getLatLong = require("./getTweetLatLong")
 module.exports = addTweetToDB
 
 async function addTweetToDB(tweetID) {
@@ -18,5 +18,6 @@ async function addTweetToDB(tweetID) {
         tweetObject.image = requestData.entities.urls[0].images[0].url
     } catch { }
     tweetObject.created = new Date()
+    tweetObject.position = await getLatLong(tweetObject)
     await db.insert("tweets", { id: tweetObject.id }, tweetObject)
 }
