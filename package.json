@@ -1,0 +1,26 @@
+{
+  "name": "live-action-map-backend",
+  "version": "0.1.0",
+  "description": "Backend for the Live Action Map project",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Live-Action-Map/Live-Action-Map-Backend.git"
+  },
+  "author": "Dominika Jadowska",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Live-Action-Map/Live-Action-Map-Backend/issues"
+  },
+  "homepage": "https://github.com/Live-Action-Map/Live-Action-Map-Backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongodb": "^4.6.0"
+  }
+}
