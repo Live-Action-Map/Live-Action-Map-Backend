@@ -10,6 +10,8 @@ async function addTweetToDB(tweetID) {
         headers: {
             'Authorization': 'Bearer ' + process.env.TWITTER_TOKEN
         }
+    }).catch(function (error) {
+        console.log(error);
     })
     requestData = requestData.data.data[0]
     tweetObject.id = requestData.id
