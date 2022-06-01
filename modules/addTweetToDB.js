@@ -19,5 +19,7 @@ async function addTweetToDB(tweetID) {
     } catch { }
     tweetObject.created = new Date()
     tweetObject.position = await getLatLong(tweetObject)
-    await db.insert("tweets", { id: tweetObject.id }, tweetObject)
+    if (tweetID.position) {
+        await db.insert("tweets", { id: tweetObject.id }, tweetObject)
+    }
 }

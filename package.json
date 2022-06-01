@@ -20,6 +20,7 @@
     "nodemon": "^2.0.16"
   },
   "dependencies": {
+    "all-the-cities": "^3.1.0",
     "axios": "^0.27.2",
     "cli-color": "^2.0.2",
     "cors": "^2.8.5",
@@ -30,6 +31,7 @@
     "mongodb": "^4.6.0",
     "needle": "^3.1.0",
     "node-cron": "^3.0.0",
+    "nominatim-client": "^3.2.1",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.4.0"
   }

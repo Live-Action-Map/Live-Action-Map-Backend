@@ -38,6 +38,7 @@ let zones = []
 let markers = []
 
 async function readDB() {
+    zones = await db.read("zones")
     markers = await db.read("tweets")
 }
 
