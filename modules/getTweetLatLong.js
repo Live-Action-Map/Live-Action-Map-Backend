@@ -1,12 +1,5 @@
-// const nominatim = require('nominatim-client');
-// const client = nominatim.createClient({
-//     useragent: "Live Action Map",             // The name of your application
-//     referer: 'https://live-action-map.com',  // The referer link
-// });
-
-const cities = require('all-the-cities');
-
 module.exports = getLatLong
+const axios = require("axios")
 
 async function getLatLong(data) {
     let text = data.text.replace('/', '')
@@ -20,14 +13,23 @@ async function getLatLong(data) {
     if (textArray.length) {
         for (let index = 0; index < textArray.length; index++) {
             const element = textArray[index];
-            
+            let lat = ""
+            let lon = ""
             try {
-                let location = cities.filter(city => city.name.match(element))
-                if (location.length) {
-                    if (location[0].country == "UA") {
-                        position = location[0].loc.coordinates
-                    }
-                }
+                //THIS IS STUPID
+                await axios.get(`https://nominatim.openstreetmap.org/search.php?q=${element}&format=json`).then((res) => {
+                    lat = res.data[0].lat
+                    lon = res.data[0].lon
+                }).catch()
+                await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then((res) => {
+                    // if (res.data.address.country_code == "ua") {
+                        position.push(lat)
+                        position.push(lon)
+                    // }
+                    console.log(res.data.address.country_code)
+                    console.log(position)
+                }).catch()
+
             } catch (e) {
                 console.log(e)
             }
@@ -35,4 +37,3 @@ async function getLatLong(data) {
     }
     return position
 }
-
