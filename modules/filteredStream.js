@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env' })
+require('dotenv').config()
 const needle = require('needle');
 const token = process.env.TWITTER_TOKEN;
 const rulesURL = 'https://api.twitter.com/2/tweets/search/stream/rules';
@@ -13,6 +13,7 @@ async function getAllRules() {
         }
     })
     if (response.statusCode !== 200) {
+        console.log(token)
         console.log("Error:", response.statusMessage, response.statusCode)
         throw new Error(response.body);
     }

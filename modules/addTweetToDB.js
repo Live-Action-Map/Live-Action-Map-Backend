@@ -3,6 +3,7 @@ const db = require("./db")
 const axios = require("axios")
 const getLatLong = require("./getTweetLatLong")
 module.exports = addTweetToDB
+const socketEmmit = require('./socket')
 
 async function addTweetToDB(tweetID) {
     let tweetObject = {}
@@ -21,6 +22,7 @@ async function addTweetToDB(tweetID) {
     } catch { }
     tweetObject.created = new Date()
     tweetObject.position = await getLatLong(tweetObject)
+    socketEmmit(tweetObject)
     if (tweetID.position) {
         await db.insert("tweets", { id: tweetObject.id }, tweetObject)
     }

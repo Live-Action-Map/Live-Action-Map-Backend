@@ -32,6 +32,7 @@
     "needle": "^3.1.0",
     "node-cron": "^3.0.0",
     "nominatim-client": "^3.2.1",
+    "socket.io": "^4.5.1",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.4.0"
   }
