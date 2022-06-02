@@ -22,10 +22,10 @@ async function getLatLong(data) {
                     lon = res.data[0].lon
                 }).catch()
                 await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then((res) => {
-                    // if (res.data.address.country_code == "ua") {
+                    if (res.data.address.country_code == "ua") {
                         position.push(lat)
                         position.push(lon)
-                    // }
+                    }
                     console.log(res.data.address.country_code)
                     console.log(position)
                 }).catch()
