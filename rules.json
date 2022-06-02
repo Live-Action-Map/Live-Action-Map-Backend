@@ -1,6 +1,6 @@
 [
     {
-        "value": "(spotted OR movement OR soldiers OR attacks OR army OR military OR vehicles OR aircraft OR plane OR shoot OR shell OR fight OR invaders OR strike OR tank) (#ukraine OR #russianarmy OR #OSINT)",
+        "value": "-is:retweet (spotted OR movement OR soldiers OR attacks OR army OR military OR vehicles OR aircraft OR plane OR shoot OR shell OR fight OR invaders OR strike OR tank) (#ukraine OR #russianarmy OR #OSINT)",
         "tag": "return"
     }
 ]
