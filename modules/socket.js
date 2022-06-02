@@ -3,11 +3,9 @@ const httpServer = require("http").createServer();
 const io = require("socket.io")(httpServer, {
     // ...
 });
+const logger = require("./logger")
 
-io.on("connection", (socket) => {
-    // ...
-});
-
+logger.start(process.env.SERVER_IP, process.env.SERVER_PORT)
 
 
 httpServer.listen(process.env.SERVER_PORT);
