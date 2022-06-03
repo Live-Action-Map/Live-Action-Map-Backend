@@ -108,3 +108,9 @@ function streamConnect(retryAttempt) {
 function handleStreamMessage(message) {
     addTweetToDB(message.data.id)
 }
+
+handleStreamMessage({
+    data: {
+        id: "1532266372742492163"
+    }
+})
