@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const db = require("./db")
-
+const cron = require("node-cron")
 async function cleanDB() {
     let tweets = await db.read("tweets")
     const currentTime = new Date
