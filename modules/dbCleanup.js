@@ -8,7 +8,7 @@ async function cleanDB() {
     tweets.forEach(tweet => {
         const msBetweenDates = Math.abs(tweet.created.getTime() - currentTime.getTime());
         const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
-        if (hoursBetweenDates > 24) {
+        if (hoursBetweenDates > 96) {
             db.remove("tweets", { id: tweet.id })
         }
         if (tweet.position.length < 1) {
