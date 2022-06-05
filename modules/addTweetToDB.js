@@ -12,7 +12,7 @@ async function addTweetToDB(tweetID) {
             'Authorization': 'Bearer ' + process.env.TWITTER_TOKEN
         }
     }).catch(function (error) {
-        console.log(error);
+        console.log(error.message);
     })
     requestData = requestData.data.data[0]
     tweetObject.id = requestData.id
@@ -22,7 +22,7 @@ async function addTweetToDB(tweetID) {
     } catch { }
     tweetObject.created = new Date()
     tweetObject.position = await getLatLong(tweetObject)
-    if (tweetObject.position) {
+    if (tweetObject.position.length > 1) {
         socketEmmit(tweetObject)
         await db.insert("tweets", { id: tweetObject.id }, tweetObject)
     }

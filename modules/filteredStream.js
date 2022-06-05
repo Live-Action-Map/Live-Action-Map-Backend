@@ -13,7 +13,6 @@ async function getAllRules() {
         }
     })
     if (response.statusCode !== 200) {
-        console.log(token)
         console.log("Error:", response.statusMessage, response.statusCode)
         throw new Error(response.body);
     }

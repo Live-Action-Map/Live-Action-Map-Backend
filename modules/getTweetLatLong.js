@@ -14,7 +14,7 @@ async function getLatLong(data) {
     }).then((res) => {
         textArray = res.data.words
     }).catch(function (error) {
-        console.log(error);
+        console.log(error.message);
     });
 
     textArray.forEach(async (element) => {
@@ -28,15 +28,15 @@ async function getLatLong(data) {
                 lat = res.data[0].lat
                 lon = res.data[0].lon
             }).catch(function (error) {
+                console.log(error.message)
             });
             await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then((res) => {
                 if (res.data.address.country_code == "ua") {
                     position.push(lat)
                     position.push(lon)
                 }
-                console.log(res.data.address.country_code)
-                console.log(position)
             }).catch(function (error) {
+                console.log(error.message)
             });
         }
     });
