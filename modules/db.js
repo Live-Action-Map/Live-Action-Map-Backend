@@ -8,7 +8,8 @@ const db = process.env.MONGO_DB
 
 module.exports = {
     insert,
-    read
+    read,
+    remove
 }
 
 
@@ -38,3 +39,9 @@ async function read(collection, find) {
     return result
 }
 
+async function remove(collection, find) {
+    await client.connect()
+    let database = client.db(db)
+    let collectionDb = database.collection(collection)
+    let result = await collectionDb.deleteOne(find);
+}
