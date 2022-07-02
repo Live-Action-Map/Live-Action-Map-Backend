@@ -3,3 +3,4 @@ SERVER_IP=localhost
 MONGO_URI=
 MONGO_DB=LiveActionMap
 TWITTER_TOKEN=
+SPACY_URL=
