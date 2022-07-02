@@ -3,9 +3,9 @@ const httpServer = require("http").createServer();
 const io = require("socket.io")(httpServer, {
     // ...
 });
-const logger = require("./logger")
+const logger = require("@bunnylogger/bunnylogger")
 
-logger.start(process.env.SERVER_IP, process.env.SERVER_PORT)
+logger.start(`Server running `)
 
 
 httpServer.listen(process.env.SERVER_PORT);

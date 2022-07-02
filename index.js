@@ -1,2 +1,2 @@
-require("./modules/filteredStream")
+require("./modules/connector.js")
 require("./modules/dbCleanup")

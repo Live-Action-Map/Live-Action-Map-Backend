@@ -1,6 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 require('dotenv').config()
-
+const logger = require("@bunnylogger/bunnylogger")
 const uri = process.env.MONGO_URI
 
 const client = new MongoClient(uri);
@@ -24,7 +24,7 @@ async function insert(collection, query, doc) {
         let result = await col.updateOne(query, update, options);
         return result
     } catch (e) {
-        console.log(e)
+        logger.error(e)
     }
 }
 
