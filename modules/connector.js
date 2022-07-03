@@ -6,7 +6,8 @@ const logger = require("@bunnylogger/bunnylogger");
 const checkWordsAgainstSpacy = require("./checkWordsAgainstSpacy")
 const addToFeed = require("./socket");
 const getCitesPostion = require('./getCityPosition');
-const db = require("./db")
+const db = require("./db");
+const removeUkraineWord = require('./removeUkraineWord');
 
 
 socket.on('connect', function (socket) {
@@ -19,6 +20,7 @@ socket.on('tweet', async function (msg) {
     tweet.text = lintTweet(tweet.text)
     let cityList = await checkWordsAgainstSpacy(tweet.text.split(" "))
     if (cityList.length == 0) return;
+    cityList = await removeUkraineWord(cityList)
     tweet.position = await getCitesPostion(cityList)
-    db.insert("tweets", {id: tweet.id}, tweet)
+    db.insert("tweets", { id: tweet.id }, tweet)
 });
