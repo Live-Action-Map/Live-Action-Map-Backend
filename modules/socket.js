@@ -3,7 +3,7 @@ const httpServer = require("http").createServer();
 const io = require("socket.io")(httpServer, {
     // ...
 });
-const logger = require("@bunnylogger/bunnylogger")
+const logger = require("@bunnynode/bunnylogger")
 
 logger.start(`Server running `)
 

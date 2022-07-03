@@ -1,6 +1,6 @@
 const axios = require("axios")
 require('dotenv').config()
-const logger = require("@bunnylogger/bunnylogger")
+const logger = require("@bunnynode/bunnylogger")
 
 module.exports = checkWordAgainsSpacy
 

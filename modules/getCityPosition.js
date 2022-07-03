@@ -1,6 +1,6 @@
 module.exports = getCitesPostion
 const axios = require("axios")
-const logger = require("@bunnylogger/bunnylogger")
+const logger = require("@bunnynode/bunnylogger")
 async function getCitesPostion(cities) {
     return new Promise(async (resolve, reject) => {
         for (let index = 0; index < cities.length; index++) {
@@ -15,17 +15,17 @@ async function getCitesPostion(cities) {
             });
             if (lat != "" && lon != "") {
                 await axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then((res) => {
-                if (res.data.address.country_code == "ua") {
-                    let position = []
-                    position.push(lat)
-                    position.push(lon)
-                    resolve(position)
-                }
-            }).catch(function (error) {
-                logger.error(error)
-            });
+                    if (res.data.address.country_code == "ua") {
+                        let position = []
+                        position.push(lat)
+                        position.push(lon)
+                        resolve(position)
+                    }
+                }).catch(function (error) {
+                    logger.error(error)
+                });
             }
-            
+
 
         }
     })
